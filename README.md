@@ -11,12 +11,12 @@
 Learn how to make beautiful and responsive admin dashboard in Reactjs. We will use React hooks, apexcharts, motion-framer, modern css and many more from scratch during the development of this admin panel.
 
 - JS Map method
-- UseState Hook
+- <code>UseState</code> Hook
 - Apex Charts
 - Framer Motion
 - Modern CSS
 - Icon Scout
-- Material UI
+- Material UI (MUI)
 - Emotion (css-in-js)
 - Google Fonts
 - <u>Tools</u>: Vite, TypeScript
