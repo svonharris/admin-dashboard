@@ -3,15 +3,20 @@ import { AnimateSharedLayout } from "framer-motion";
 import { useState } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { UliTimes } from "@iconscout/react-unicons";
 
 const Card = (props) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
     <div className="card">
-      {/* <AnimateSharedLayout> */}
-      {expanded ? "Expanded" : <CompactCard params={props} />}
-      {/* </AnimateSharedLayout> */}
+      <AnimateSharedLayout>
+        {expanded ? (
+          <ExpandedCard param={props} setExpanded={() => setExpanded(false)} />
+        ) : (
+          <CompactCard param={props} setExpanded={() => setExpanded(true)} />
+        )}
+      </AnimateSharedLayout>
     </div>
   );
 };
@@ -27,6 +32,7 @@ function CompactCard({ params }) {
         background: params.color.backGround,
         boxShadow: params.color.boxShadow,
       }}
+      onClick={setExpanded}
     >
       <div className="radialBar">
         <CircularProgressbar
@@ -45,8 +51,24 @@ function CompactCard({ params }) {
 }
 
 //Expanded Card
-function ExpandedCard() {
-  return <div className="expanedCard"></div>;
+function ExpandedCard({ params, setExpanded }) {
+  return (
+    <div
+      className="expanedCard"
+      style={{
+        background: params.color.backGround,
+        boxShadow: params.color.boxShadow,
+      }}
+      onClick={setExpanded}
+    >
+      <div>
+        <UliTimes onClick={setExpanded} />
+        <span>{param.title}</span>
+        <div className="chartContainer">Chart</div>
+        <span>Last 24 hours</span>
+      </div>
+    </div>
+  );
 }
 
 export default Card;
