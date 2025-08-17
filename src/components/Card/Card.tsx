@@ -1,32 +1,45 @@
 import "./Card.css";
-import { AnimateSharedLayout } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react"; // motion.dev import
 import { useState } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { UliTimes } from "@iconscout/react-unicons";
+import { UilTimes } from "@iconscout/react-unicons";
 
 const Card = (props) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
     <div className="card">
-      <AnimateSharedLayout>
+      <AnimatePresence mode="wait">
         {expanded ? (
-          <ExpandedCard param={props} setExpanded={() => setExpanded(false)} />
+          <ExpandedCard
+            key="expanded"
+            params={props}
+            setExpanded={() => setExpanded(false)}
+          />
         ) : (
-          <CompactCard param={props} setExpanded={() => setExpanded(true)} />
+          <CompactCard
+            key="compact"
+            params={props}
+            setExpanded={() => setExpanded(true)}
+          />
         )}
-      </AnimateSharedLayout>
+      </AnimatePresence>
     </div>
   );
 };
 
-//Compact Card
-function CompactCard({ params }) {
+// Compact Card
+function CompactCard({ params, setExpanded }) {
   const Png = params.png;
 
   return (
-    <div
+    <motion.div
+      layout
+      initial={{ borderRadius: "1rem", opacity: 0 }}
+      animate={{ borderRadius: "1rem", opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
       className="compactCard"
       style={{
         background: params.color.backGround,
@@ -46,28 +59,32 @@ function CompactCard({ params }) {
         <span>${params.value}</span>
         <span>Last 24 hours</span>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
-//Expanded Card
+// Expanded Card
 function ExpandedCard({ params, setExpanded }) {
   return (
-    <div
-      className="expanedCard"
+    <motion.div
+      layout
+      initial={{ borderRadius: "1rem", opacity: 0 }}
+      animate={{ borderRadius: "1rem", opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="expandedCard"
       style={{
         background: params.color.backGround,
         boxShadow: params.color.boxShadow,
       }}
-      onClick={setExpanded}
     >
       <div>
-        <UliTimes onClick={setExpanded} />
-        <span>{param.title}</span>
+        <UilTimes onClick={setExpanded} style={{ cursor: "pointer" }} />
+        <span>{params.title}</span>
         <div className="chartContainer">Chart</div>
         <span>Last 24 hours</span>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
