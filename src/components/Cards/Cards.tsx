@@ -1,9 +1,8 @@
 import "./Cards.css";
 import { CardsData } from "../../Data/Data";
 import Card from "../Card/Card";
-// import { div } from "framer-motion/client";
 
-export const Cards = () => {
+const Cards = () => {
   return (
     <div className="cards">
       {CardsData.map((card, id) => {
@@ -23,3 +22,5 @@ export const Cards = () => {
     </div>
   );
 };
+
+export default Cards;
