@@ -6,7 +6,21 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { UilTimes } from "@iconscout/react-unicons";
 
-const Card = (props) => {
+// The card is not moving from compact to expanded and back smoothly like the tutorial.
+
+type CardProps = {
+  title: string;
+  color: {
+    backGround: string;
+    boxShadow: string;
+  };
+  barValue: number;
+  value: string;
+  png: React.ComponentType<{ size?: number }>;
+  series: [];
+};
+
+const Card = (props: CardProps) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
