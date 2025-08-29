@@ -1,6 +1,6 @@
 import {
   UilEstate,
-  UilClipboardAlt,
+  UilClipboardNotes,
   UilUsersAlt,
   UilPackage,
   UilChart,
@@ -18,7 +18,7 @@ export const SidebarData = [
     heading: "Dashboard",
   },
   {
-    icon: UilClipboardAlt,
+    icon: UilClipboardNotes,
     heading: "Orders",
   },
   {
@@ -77,7 +77,7 @@ export const CardsData = [
     },
     barValue: 60,
     value: "4,270",
-    png: UilClipboardAlt,
+    png: UilClipboardNotes,
     series: [
       {
         Name: "Expenses",
@@ -93,17 +93,20 @@ export const UpdatesData = [
     name: "Andrew Thomas",
     noti: "has ordered Apple smart watch 2500mAh battery.",
     time: "25 seconds ago",
+    id: 1,
   },
   {
     img: img2,
     name: "Todd Richards",
     noti: "has received Samsung gadget for charging battery.",
     time: "30 minutes ago",
+    id: 2,
   },
   {
     img: img3,
     name: "Claudia Marshall",
     noti: "has ordered Apple smart watch, samsung Gear 2500mh battery.",
     time: "2 hours ago",
+    id: 3,
   },
 ];
