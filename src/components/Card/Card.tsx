@@ -1,5 +1,5 @@
 import "./Card.css";
-import { motion, AnimatePresence } from "motion/react"; // motion.dev import
+import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 import Chart from "react-apexcharts";
 import { CircularProgressbar } from "react-circular-progressbar";
@@ -17,7 +17,7 @@ type CardProps = {
   barValue: number;
   value: string;
   png: React.ComponentType<{ size?: number }>;
-  series: [];
+  series: {};
 };
 
 const Card = (props: CardProps) => {
