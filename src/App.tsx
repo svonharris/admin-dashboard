@@ -1,15 +1,15 @@
 import Sidebar from "./components/Sidebar/Sidebar";
 import MainDash from "./components/MainDash/MainDash";
-import CssBaseline from "@mui/material/CssBaseline";
+import RightSide from "./components/RightSide/RightSide";
 
 function App() {
   return (
     <>
       <div className="app">
         <div className="app-glass">
-          <CssBaseline />
           <Sidebar />
           <MainDash />
+          <RightSide />
         </div>
       </div>
     </>
