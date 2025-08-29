@@ -1,6 +1,7 @@
 import "./Card.css";
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
+import { ApexOptions } from "apexcharts";
 import Chart from "react-apexcharts";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -17,7 +18,7 @@ type CardProps = {
   barValue: number;
   value: string;
   png: React.ComponentType<{ size?: number }>;
-  series: {};
+  series: { name: string; data: number[] }[];
 };
 
 const Card = (props: CardProps) => {
@@ -44,8 +45,15 @@ const Card = (props: CardProps) => {
   );
 };
 
+type SmallCardProps = {
+  params: CardProps;
+  setExpanded: () => void;
+};
 // Compact Card
-function CompactCard({ params, setExpanded }) {
+function CompactCard({
+  params,
+  setExpanded,
+}: SmallCardProps): React.JSX.Element {
   const Png = params.png;
 
   return (
@@ -80,21 +88,24 @@ function CompactCard({ params, setExpanded }) {
 }
 
 // Expanded Card
-function ExpandedCard({ params, setExpanded }) {
-  const data = {
+function ExpandedCard({
+  params,
+  setExpanded,
+}: SmallCardProps): React.JSX.Element {
+  const data: { options: ApexOptions } = {
     options: {
       chart: {
         type: "area",
         height: "auto",
-      },
-      dropShadow: {
-        enabled: false,
-        enabledOnSeries: undefined,
-        top: 0,
-        left: 0,
-        blur: 3,
-        color: "#000",
-        opacity: 0.35,
+        dropShadow: {
+          enabled: false,
+          enabledOnSeries: undefined,
+          top: 0,
+          left: 0,
+          blur: 3,
+          color: "#000",
+          opacity: 0.35,
+        },
       },
       fill: {
         colors: ["#fff"],
