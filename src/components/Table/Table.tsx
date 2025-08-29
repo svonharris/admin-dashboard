@@ -7,45 +7,31 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import "./Table.css";
 
-// type OrderData = {
-//   name: string;
-//   trackingId: number;
-//   date: string;
-//   status: string;
-// };
-
-// function createData({ name, trackingId, date, status }: OrderData): OrderData {
-//   return { name, trackingId, date, status };
-// }
-
-// function createData(
-//   name: string,
-//   trackingId: number,
-//   date: string,
-//   status: string
-// ) {
-//   return { name, trackingId, date, status };
-// }
-
-// const rows = [
-//   createData("Air Max", 47283910, "April 12 2023", "Approved"),
-//   createData("Jordan Retro", 58392047, "June 25 2023", "Pending"),
-//   createData("Stan Smith", 91837465, "August 7 2022", "Rejected"),
-//   createData("Chuck Taylor", 20583749, "January 19 2024", "Approved"),
-// ];
-
-function createData(name, trackingId, date, status) {
+// Table Data
+type OrderData = {
+  name: string;
+  trackingId: number;
+  date: string;
+  status: string;
+};
+const rows = [
+  createData("Air Max", 47283910, "April 12 2023", "Approved"),
+  createData("Jordan Retro", 58392047, "June 25 2023", "Pending"),
+  createData("Stan Smith", 91837465, "August 7 2022", "Rejected"),
+  createData("Chuck Taylor", 20583749, "January 19 2024", "Approved"),
+];
+function createData(
+  name: string,
+  trackingId: number,
+  date: string,
+  status: string
+): OrderData {
   return { name, trackingId, date, status };
 }
 
-const rows = [
-  createData("lasania chiken", 18908424, "2 March 2022", "Approved"),
-  createData("big Baza Bang", 18908424, "2 March 2022", "Pending"),
-  createData("Mouth Freshner", 18908424, "2 March 2022", "Approved"),
-  createData("cupcake", 18908424, "2 March 2022", "Delivered"),
-];
-
-const makeStyles = (status) => {
+// Status Styles
+type StatusStyle = { status: string };
+const makeStyles = ({ status }: StatusStyle) => {
   if (status === "Approved") {
     return {
       background: "rgb(145 254 159 / 47%)",
@@ -102,7 +88,10 @@ function BasicTable() {
                 <TableCell align="left">{row.trackingId}</TableCell>
                 <TableCell align="left">{row.date}</TableCell>
                 <TableCell align="left">
-                  <span className="status" style={makeStyles(row.status)}>
+                  <span
+                    className="status"
+                    style={makeStyles({ status: row.status })}
+                  >
                     {row.status}
                   </span>
                 </TableCell>
