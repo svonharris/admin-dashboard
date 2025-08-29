@@ -1,7 +1,4 @@
-.MuiTableRow-root .MuiTableCell-head {
-    font-weight: bold !important;
-}
-.Table td, Table th {
+.Table td, .Table th {
     border: none !important;
 }
 .status {

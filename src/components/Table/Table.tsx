@@ -75,11 +75,19 @@ function BasicTable() {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Product</TableCell>
-              <TableCell align="left">Tracking ID</TableCell>
-              <TableCell align="left">Date</TableCell>
-              <TableCell align="left">Status</TableCell>
-              <TableCell align="left"> </TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>Product</TableCell>
+              <TableCell align="left" sx={{ fontWeight: "bold" }}>
+                Tracking ID
+              </TableCell>
+              <TableCell align="left" sx={{ fontWeight: "bold" }}>
+                Date
+              </TableCell>
+              <TableCell align="left" sx={{ fontWeight: "bold" }}>
+                Status
+              </TableCell>
+              <TableCell align="left" sx={{ fontWeight: "bold" }}>
+                {" "}
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
