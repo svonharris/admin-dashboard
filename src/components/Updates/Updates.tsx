@@ -6,7 +6,7 @@ const Updates = () => {
     <div className="Updates">
       {UpdatesData.map((update) => {
         return (
-          <div className="update">
+          <div className="update" key={update.id}>
             <img src={update.img} alt={update.name} />
             <div className="noti">
               <div style={{ marginBottom: "0.5rem" }}>
