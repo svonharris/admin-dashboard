@@ -1,3 +1,13 @@
-.MuiTableRow-root>* {
-    padding: 10px;
+.MuiTableRow-root .MuiTableCell-head {
+    font-weight: bold !important;
+}
+.Table td, Table th {
+    border: none !important;
+}
+.status {
+    padding: 5px;
+    border-radius: 9px;
+}
+.details {
+    color: #00b5ff !Important;
 }
