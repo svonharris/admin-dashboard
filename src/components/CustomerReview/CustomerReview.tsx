@@ -7,6 +7,9 @@ const CustomerReview = () => {
     chart: {
       type: "area",
       height: "auto",
+      toolbar: {
+        show: true,
+      },
     },
     fill: {
       colors: ["#fff"],
