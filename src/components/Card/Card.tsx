@@ -21,154 +21,60 @@ type CardProps = {
   series: { name: string; data: number[] }[];
 };
 
-const Card = (props: CardProps) => {
+function Card(props: CardProps) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="card">
-      <AnimatePresence mode="wait">
-        {expanded ? (
-          <ExpandedCard
-            key="expanded"
-            params={props}
-            setExpanded={() => setExpanded(false)}
-          />
-        ) : (
-          <CompactCard
-            key="compact"
-            params={props}
-            setExpanded={() => setExpanded(true)}
-          />
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
-
-type SmallCardProps = {
-  params: CardProps;
-  setExpanded: () => void;
-};
-// Compact Card
-function CompactCard({
-  params,
-  setExpanded,
-}: SmallCardProps): React.JSX.Element {
-  const Png = params.png;
-
-  return (
     <motion.div
       layout
-      initial={{ borderRadius: "1rem", opacity: 0 }}
-      animate={{ borderRadius: "1rem", opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="compactCard"
+      layoutId={`card-${props.title}`}
+      transition={{ layout: { duration: 0.4, ease: "easeInOut" } }}
+      className={expanded ? "expandedCard" : "compactCard"}
       style={{
-        background: params.color.backGround,
-        boxShadow: params.color.boxShadow,
+        background: props.color.backGround,
+        boxShadow: props.color.boxShadow,
+        borderRadius: "1rem",
       }}
-      onClick={setExpanded}
-      // layoutId="expandableCard"
+      onClick={() => setExpanded(!expanded)}
     >
-      <div className="radialBar">
-        <CircularProgressbar
-          value={params.barValue}
-          text={`${params.barValue}%`}
-        />
-        <span>{params.title}</span>
-      </div>
-      <div className="detail">
-        <Png size={25} />
-        <span>${params.value}</span>
-        <span>Last 24 hours</span>
-      </div>
-    </motion.div>
-  );
-}
-
-// Expanded Card
-function ExpandedCard({
-  params,
-  setExpanded,
-}: SmallCardProps): React.JSX.Element {
-  const data: { options: ApexOptions } = {
-    options: {
-      chart: {
-        type: "area",
-        height: "auto",
-        dropShadow: {
-          enabled: false,
-          enabledOnSeries: undefined,
-          top: 0,
-          left: 0,
-          blur: 3,
-          color: "#000",
-          opacity: 0.35,
-        },
-      },
-      fill: {
-        colors: ["#fff"],
-        type: "gradient",
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        curve: "smooth",
-        colors: ["#fff"],
-      },
-      tooltip: {
-        x: {
-          format: "dd/MM/yy HH:mm",
-        },
-      },
-      grid: {
-        show: true,
-      },
-      xaxis: {
-        type: "datetime",
-        categories: [
-          "2018-09-19T00:00:00.000Z",
-          "2018-09-19T01:30:00.000Z",
-          "2018-09-19T02:30:00.000Z",
-          "2018-09-19T03:30:00.000Z",
-          "2018-09-19T04:30:00.000Z",
-          "2018-09-19T05:30:00.000Z",
-          "2018-09-19T06:30:00.000Z",
-        ],
-      },
-    },
-  };
-
-  return (
-    <motion.div
-      layout
-      initial={{ borderRadius: "1rem", opacity: 0 }}
-      animate={{ borderRadius: "1rem", opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="expandedCard"
-      style={{
-        background: params.color.backGround,
-        boxShadow: params.color.boxShadow,
-      }}
-      // layoutId="expandableCard"
-    >
-      <UilTimes
-        onClick={setExpanded}
-        style={{ cursor: "pointer", fill: "white", alignSelf: "flex-end" }}
-        size={30}
-      />
-      <span>{params.title}</span>
-      <div className="chartContainer">
-        <Chart
-          series={params.series || []}
-          type="area"
-          options={data.options}
-        />
-      </div>
-      <span>Last 24 hours</span>
+      {expanded ? (
+        <>
+          <UilTimes
+            onClick={() => setExpanded(false)}
+            style={{ cursor: "pointer", fill: "white", alignSelf: "flex-end" }}
+            size={30}
+          />
+          <span>{props.title}</span>
+          <div className="chartContainer">
+            <Chart
+              series={props.series}
+              type="area"
+              options={{
+                chart: { type: "area", height: "auto" },
+                fill: { colors: ["#fff"], type: "gradient" },
+                stroke: { curve: "smooth", colors: ["#fff"] },
+                dataLabels: { enabled: false },
+              }}
+            />
+          </div>
+          <span>Last 24 hours</span>
+        </>
+      ) : (
+        <>
+          <div className="radialBar">
+            <CircularProgressbar
+              value={props.barValue}
+              text={`${props.barValue}%`}
+            />
+            <span>{props.title}</span>
+          </div>
+          <div className="detail">
+            <props.png size={25} />
+            <span>${props.value}</span>
+            <span>Last 24 hours</span>
+          </div>
+        </>
+      )}
     </motion.div>
   );
 }
