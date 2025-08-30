@@ -47,7 +47,7 @@ export const CardsData = [
     png: UilUsdSquare,
     series: [
       {
-        Name: "Sales",
+        name: "Sales",
         data: [31, 40, 28, 51, 42, 109, 100],
       },
     ],
@@ -63,7 +63,7 @@ export const CardsData = [
     png: UilMoneyWithdrawal,
     series: [
       {
-        Name: "Revenue",
+        name: "Revenue",
         data: [10, 100, 50, 70, 80, 30, 40],
       },
     ],
@@ -80,7 +80,7 @@ export const CardsData = [
     png: UilClipboardNotes,
     series: [
       {
-        Name: "Expenses",
+        name: "Expenses",
         data: [10, 20, 15, 30, 12, 15, 20],
       },
     ],
