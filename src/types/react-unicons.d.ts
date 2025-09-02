@@ -17,4 +17,5 @@ declare module "@iconscout/react-unicons" {
   export const UilTimes: FC<UniconProps>;
   export const UilSignOutAlt: FC<UniconProps>;
   export const UilBox: FC<UniconProps>;
+  export const UilBars: FC<UniconProps>;
 }

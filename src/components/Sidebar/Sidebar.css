@@ -1,3 +1,13 @@
+.hamburgerMenu {
+    display: flex;
+    position: fixed;
+    top: 1.5rem;
+    z-index: 10;
+    background-color: #ffe0e0;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 300ms ease;
+}
 .sidebar {
     display: flex;
     flex-direction: column;
@@ -87,4 +97,24 @@
         position: relative;
         margin-top: 2rem;
     }
+}
+
+@media screen and (max-width: 414px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Hide sidebar off-screen */
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+    transition: left 0.3s ease;
+  }
+  .sidebar.sidebar--active {
+    left: 0; /* Slide sidebar into view */
+  }
+  .hamburgerMenu {
+    left: 1rem; /* icon when sidebar closed */
+    transition: left 0.3s ease-in-out;
+  }
+  .hamburgerMenu.hamburgerMenu--active {
+    left: 45%; /* icon when sidebar is open */
+  }
 }
