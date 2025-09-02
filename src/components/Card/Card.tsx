@@ -1,13 +1,10 @@
 import "./Card.css";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { useState } from "react";
-import { ApexOptions } from "apexcharts";
 import Chart from "react-apexcharts";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { UilTimes } from "@iconscout/react-unicons";
-
-// The card is not moving from compact to expanded and back smoothly like the tutorial.
 
 type CardProps = {
   title: string;
