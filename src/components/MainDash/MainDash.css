@@ -3,3 +3,16 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+@media screen and (max-width: 1200px) {
+    .mainDash {
+        justify-content: flex-start;
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (max-width: 786px) {
+    .mainDash {
+        align-items: center;
+    }
+}

@@ -33,3 +33,19 @@ body {margin: 0;}
   grid-template-columns: 11rem auto 20rem;
   gap: 10px;
 }
+
+@media screen and (max-width: 1200px) {
+  .app-glass{
+    grid-template-columns: 10% 50% auto;
+    overflow-y: scroll;
+  };
+}
+
+@media screen and (max-width: 786px) {
+    .app-glass {
+      grid-template-columns: 1fr;
+    }
+    .app-glass::-webkit-scrollbar {
+      display: none;
+    }
+}
